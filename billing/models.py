@@ -14,11 +14,14 @@ class Billing(models.Model):
 
 class DropBox(models.Model):
     title = models.CharField(max_length=30)
-    document = models.FileField(max_length=30,null=True,
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=False,blank=False , default=0)
+
+    document = models.FileField(max_length=30,null=False,
                            blank=True,
                            validators=[FileExtensionValidator( ['pdf','jpg','csv','png'] ) ])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
     class Meta:
         verbose_name_plural = 'Drop Boxes'
