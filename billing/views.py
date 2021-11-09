@@ -26,8 +26,9 @@ class DropBoxViewset(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         user = request.user
-        list_files = DropBox.objects.get(user=user.id)
-        serializer = DropBoxSerializer(list_files)
+        list_files = DropBox.objects.filter(user=user.id)
+        serializer = DropBoxSerializer(list_files,many=True)
+        print(serializer)
         response = {'message': 'Rating updated', 'result': serializer.data}
         return Response(response, status=status.HTTP_200_OK)
 
