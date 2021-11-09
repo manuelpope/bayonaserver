@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('billing', '0008_dropbox'),
     ]
@@ -14,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='dropbox',
             name='document',
-            field=models.FileField(blank=True, max_length=30, null=True, upload_to='', validators=[django.core.validators.FileExtensionValidator(['pdf', 'jpg', 'csv'])]),
+            field=models.FileField(blank=True, max_length=30, null=True, upload_to='',
+                                   validators=[django.core.validators.FileExtensionValidator(['pdf', 'jpg', 'csv'])]),
         ),
     ]
