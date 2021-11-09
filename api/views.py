@@ -1,4 +1,8 @@
+import json
+
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
@@ -60,3 +64,14 @@ class RatingViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         response = {'message': 'You cant create rating like that'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+from django.contrib.auth import logout
+
+@csrf_exempt
+def logout_view(request):
+    logout(request)
+    response = {'message': 'logged out'}
+    return HttpResponse(json.dumps(response))

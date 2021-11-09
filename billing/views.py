@@ -33,3 +33,12 @@ class DropBoxViewset(viewsets.ModelViewSet):
         response = {'message': 'Rating updated', 'result': serializer.data}
         return Response(response, status=status.HTTP_200_OK)
 
+    def retrieve (self,request ,*args, **kwargs):
+
+        response = {'message': 'Not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    def update(self, request, *args, **kwargs):
+        response = {'message': 'Not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
